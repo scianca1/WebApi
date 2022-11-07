@@ -61,5 +61,8 @@ class ModelApi{
         }
         $sentencia = $this->db->prepare("UPDATE productos SET material=?,precio=?,producto=?,id_categoria_fk=? WHERE ID=?");
         $sentencia->execute([$material, $precio, $titulo, $id_categoria, $id]);
+        $repuesto=$this->getproduct($id);
+        return $repuesto;
     }
+    
 }
