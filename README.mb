@@ -1,0 +1,19 @@
+API-RESTFULL COMO CONSUMIR ESTA API : Prueba con postman
+
+El endpoint de la API es: http://localhost/web2/WepApi/api/repuestos Method = GET , URL = api/chapters Code = 200 Response = array type json
+
+Method = GET, URL = api/repuestos/:ID , Code = 200 , Response = Blog
+
+Method = GET , URL = api/categorias?categoria=1 at 5 , code = 200 , Response array type json
+
+Method = POST, URL = api/repuestos Code = 201 Response = Blog
+
+Method = PUT, URL = api/repuestos/:ID Code = 201 , Response = Blog
+
+Method = DELETE , URL = api/repuestos/:ID , Code = 200 , Response = Blog
+
+
+
+Note : order by defautl will be ASC
+
+SEARCHING & FILTERING : Add query params to GET requests: api/repuestos?filter=String or Number (search by All fields) or api/repuestos?sort=Sarasa&filter=sarasa (Search by one fieldrepuestos
