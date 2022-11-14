@@ -6,12 +6,14 @@ class ControlerApi{
 private $model;
 private $view;
 private $data;
+private $oder;
 
 public function __construct()
 {
    $this->model= new ModelApi();
    $this->view= new ViewApi();
    $this->data= $this->data = file_get_contents("php://input");
+   $this->order = isset($_GET['order']) ? $this->order = $_GET['order'] : null;
 }
 private function getdata()
 {
@@ -19,8 +21,14 @@ private function getdata()
 }
 public function getRepuestos($params= null)
 {
- $repuestos= $this->model->getAll();
- $this->view->response($repuestos);
+   if(!empty($_GET['order'])){
+      $repuestos= $this->model->getAll($_GET['order']);
+      $this->view->response($repuestos);
+   }
+   else{
+      $repuestos= $this->model->getAll();
+      $this->view->response($repuestos);
+   }
 }
 public function getrepuesto($params)
 {

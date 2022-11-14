@@ -7,12 +7,14 @@ class ModelApi{
     {
         $this->db = new PDO('mysql:host=localhost;' . 'dbname=web2;charset=utf8', 'root', '');
     }
-    function getAll()
+    function getAll($order="precio")
     {
-        $sentencia = $this->db->prepare("select * from productos");
+        if($order){
+        $sentencia = $this->db->prepare("select * from productos ORDER BY $order");
         $sentencia->execute();
         $repuestos = $sentencia->fetchAll(PDO::FETCH_OBJ);
-        return $repuestos;
+        }
+       return $repuestos;
     }
     function getproduct($id)
     {
