@@ -7,14 +7,12 @@ class ModelApi{
     {
         $this->db = new PDO('mysql:host=localhost;' . 'dbname=web2;charset=utf8', 'root', '');
     }
-    function getAll($order="precio")
+    function getAll($sort="precio",$order=null)
     {
-        if($order){
-        $sentencia = $this->db->prepare("select * from productos ORDER BY $order");
+        $sentencia = $this->db->prepare("select * from productos ORDER BY $sort $order");
         $sentencia->execute();
         $repuestos = $sentencia->fetchAll(PDO::FETCH_OBJ);
-        }
-       return $repuestos;
+         return $repuestos;
     }
     function getproduct($id)
     {
@@ -23,10 +21,10 @@ class ModelApi{
         $repuesto = $sentencia->fetch(PDO::FETCH_OBJ);
         return $repuesto;
     }
-    function filterrepuestos($id)
+    function filterrepuestos($sort,$valor)
     {
-        $sentencia = $this->db->prepare("select * from productos WHERE id_categoria_fk=?");
-        $sentencia->execute([$id]);
+        $sentencia = $this->db->prepare("select * from productos WHERE $sort=?");
+        $sentencia->execute([$valor]);
         $repuestosdecat = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $repuestosdecat;
     }
