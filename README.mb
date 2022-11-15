@@ -26,3 +26,5 @@ Method = DELETE , URL = api/repuestos/:ID , Code = 200 , Response = Blog
 Note : order by defautl will be ASC
 
 SEARCHING & FILTERING : Add query params to GET requests:  api/filtrar?sort=Sarasa&valor=sarasa (Search by one fieldrepuestos)
+
+SEARCHIN & ORDER : Add query params to GET requests: api/repuestos?sort=Sarasa&order=asc/desc (Search by sort and order)
